@@ -29,7 +29,7 @@ public class Usuario {
 	
 	private String imagen;
 	
-	private double dineroInicial;
+	private double saldo;
 	
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
 	private List<ApuestaUsuario> listaApuestas;
@@ -40,11 +40,11 @@ public class Usuario {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 
-	public Usuario(String nombre, String apellidos, String imagen, double dineroInicial) {
+	public Usuario(String nombre, String apellidos, String imagen, double saldo) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.imagen = imagen;
-		this.dineroInicial = dineroInicial;
+		this.saldo = saldo;
 	}
 	
 	
