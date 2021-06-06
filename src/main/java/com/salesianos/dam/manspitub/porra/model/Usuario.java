@@ -35,8 +35,6 @@ public class Usuario {
 	private List<ApuestaUsuario> listaApuestas;
 	
 	
-	
-	//Preguntar porque DateTime
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 
