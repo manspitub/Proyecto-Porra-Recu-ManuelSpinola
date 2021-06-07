@@ -17,7 +17,7 @@
 <body>
     <div class="container">
 
-        <form class="well form-horizontal" action=" " method="post"  id="contact_form">
+        <form class="well form-horizontal" action="#" th:action= "@{usuario/nuevo/submit}" method="post"  id="contact_form" th:object="${usuario}">
     <fieldset>
     
     <!-- Form Name -->
@@ -30,7 +30,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input  name="first_name" placeholder="Su nombre" class="form-control"  type="text">
+      <input  name="first_name" placeholder="Su nombre" class="form-control"  type="text" th:field="*{nombre}">
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input name="last_name" placeholder="Sus apellidos" class="form-control"  type="text">
+      <input name="last_name" placeholder="Sus apellidos" class="form-control"  type="text"th:field>
         </div>
       </div>
     </div>
