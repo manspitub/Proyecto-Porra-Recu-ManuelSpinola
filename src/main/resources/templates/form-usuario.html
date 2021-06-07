@@ -42,7 +42,7 @@
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input name="last_name" placeholder="Sus apellidos" class="form-control"  type="text"th:field>
+      <input name="last_name" placeholder="Sus apellidos" class="form-control"  type="text"th:field= "*{apellidos}">
         </div>
       </div>
     </div>
@@ -52,8 +52,10 @@
         <div class="col-md-4 selectContainer">
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-list"></i></span>
-        <select name="department" class="form-control selectpicker">
-        </select>
+         <select th:field=*{porra} class="form-control">
+         <option th:each="porra : $ {porra.nombre}"
+         th:value="${porra.id}" th:text="${porra.nombre}">Porra</option>
+         </select>
       </div>
     </div>
     </div>
@@ -65,7 +67,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
       <span class="input-group-addon"><i class="bi bi-cash"></i></span>
-      <input  name="user_cash" placeholder="Su Saldo" class="form-control"  type="number">
+      <input  name="user_cash" placeholder="Su Saldo" class="form-control"  type="number" th:field="*{saldo}">
         </div>
       </div>
     </div>
