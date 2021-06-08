@@ -16,14 +16,15 @@ public class UsuarioController {
 	
 	@GetMapping("/usuario")
 	public String index(Model model) {
-		model.addAttribute("productos")
+		//model.addAttribute("productos")
+		return "form-usuario";
 	}
 	
 	@GetMapping("/usuario/nuevo")
 	public String nuevoUsuario(Model model) {
 		model.addAttribute("usuario", new Usuario());
 		
-		model.addAttribute("porras")
+		//model.addAttribute("porras")
 		return "form-usuario";
 	}
 	

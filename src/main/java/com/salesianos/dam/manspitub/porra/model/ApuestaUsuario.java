@@ -1,10 +1,16 @@
 package com.salesianos.dam.manspitub.porra.model;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class ApuestaUsuario {
 	
 	@Id
@@ -14,9 +20,9 @@ public class ApuestaUsuario {
 	private String resultado;
 	private double dineroApostado;
 	
-	@OneToMany
-	private Usuario usuarios;
+	@ManyToOne
+	private Usuario usuario;
 	
-	@OneToMany
+	@ManyToOne
 	private Porra porra;
 }

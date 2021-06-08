@@ -34,6 +34,15 @@ public class Usuario {
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
 	private List<ApuestaUsuario> listaApuestas;
 	
+	public void addApuestaUsuario(ApuestaUsuario ap) {
+		this.listaApuestas.add(ap);
+		ap.setUsuario(this);
+	}
+	
+	public void removeApuestaUsuario(ApuestaUsuario ap) {
+		this.listaApuestas.remove(ap);
+		ap.setUsuario(this);
+	}
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
@@ -44,6 +53,8 @@ public class Usuario {
 		this.imagen = imagen;
 		this.saldo = saldo;
 	}
+	
+	
 	
 	
 }

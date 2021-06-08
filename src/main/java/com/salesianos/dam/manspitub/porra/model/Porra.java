@@ -1,7 +1,6 @@
 package com.salesianos.dam.manspitub.porra.model;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -9,7 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import lombok.AllArgsConstructor;
@@ -34,5 +32,14 @@ public class Porra {
 	private LocalDateTime fechaCreacion;
 	
 	@OneToMany(mappedBy = "porra", fetch = FetchType.EAGER)
-	private List<ApuestaUsuario> listadoApuestas;  
+	private List<ApuestaUsuario> listadoApuestas;
+	
+	public void addApuestaUsuario(ApuestaUsuario ap) {
+		this.listadoApuestas.add(ap);
+		ap.setPorra(this);
+	}
+	public void removeApuestaUsuario(ApuestaUsuario ap) {
+		this.listadoApuestas.remove(ap);
+		ap.setPorra(this);
+	}
 }
