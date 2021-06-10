@@ -5,45 +5,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
+
     <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-	th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+	rel="stylesheet">
     <link href="../../static/css/style.css" th:href="@{/css/style.css}"
 	rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles.css">
+    
 </head>
 <body>
+    <div class="container">
+
+        <form class="well form-horizontal" action="#" th:action= "@{porra/nuevo/submit}" method="post"  id="contact_form" th:object="${porra">
+    <fieldset>
     
+    <!-- Form Name -->
+    <legend><center><h2><b>Registre su porra</b></h2></center></legend><br>
+    
+    <!-- Text input-->
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label">Nombre de porra</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+      <input  name="porra_name" placeholder="Nombre" class="form-control"  type="text" th:field="*{nombre}">
+        </div>
+      </div>
+    </div>
+    
+    
+    <!-- Text input-->
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label" >Descripción</label> 
+        <div class="col-md-4 inputGroupContainer">
+        <div class="input-group">
+      <textarea class="form-group" name="" id="Descripción" placeholder="En que consiste..." rows="3" th:field="*{descripcion}"></textarea>
+        </div>
+      </div>
+    </div>
+    
+     <div class="form-group">
+      <label class="col-md-4 control-label">Equipo Local</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"><i class="bi bi-shield-shaded"></i></span>
+      <input  name="e_local" placeholder="equipo local" class="form-control"  type="text" th:field="*{equipoLocal}">
+        </div>
+      </div>
+    </div>  
+      
+    <!-- Text input-->
+    
+    <div class="form-group">
+      <label class="col-md-4 control-label">Equipo Visitante</label>  
+      <div class="col-md-4 inputGroupContainer">
+      <div class="input-group">
+      <span class="input-group-addon"><i class="bi bi-shield-shaded"></i></span>
+      <input  name="e_visitante" placeholder="equipo visitante" class="form-control"  type="text" th:field="*{equipoVisitante}">
+        </div>
+      </div>
+    </div>
+ 
+    
+    <!-- Success message -->
+    <div class="alert alert-success" role="alert" id="success_message"> <i class="glyphicon glyphicon-thumbs-up"></i></div>
+    
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label"></label>
+      <div class="col-md-4"><br>
+        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<button type="submit" class="btn btn-warning" >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspSUBMIT <span class="glyphicon glyphicon-send"></span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
+      </div>
+    </div>
+    
+    </fieldset>
+    </form>
+    </div>
+        </div><!-- /.container -->
 </body>
 </html>
-<div class="container-fluid px-1 py-5 mx-auto justify-content-center">
-    <div class="row d-flex">
-        <div class="col-xl-7 col-lg-8 col-md-9 col-11 offset-md-3 text-center alifn-items-center">
-            <h3>Cree su Porra</h3>
-            <p class="blue-text">Rellene los datos de este formulario<br>así podras crear tu propia porra</p>
-            <div class="card">
-                <h5 class="text-center mb-4">Powering world-class companies</h5>
-                <form class="form-card" onsubmit="event.preventDefault()">
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Nombre<span class="text-danger"> *</span></label> <input type="text" id="fname" name="fname" placeholder="Nombre de la porra" onblur="validate(1)"> </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <textarea name="" id="" cols="30" rows="10"></textarea> </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Business email<span class="text-danger"> *</span></label> <input type="text" id="email" name="email" placeholder="" onblur="validate(3)"> </div>
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Phone number<span class="text-danger"> *</span></label> <input type="text" id="mob" name="mob" placeholder="" onblur="validate(4)"> </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-sm-6 flex-column d-flex"> <label class="form-control-label px-3">Job title<span class="text-danger"> *</span></label> <input type="text" id="job" name="job" placeholder="" onblur="validate(5)"> </div>
-                    </div>
-                    <div class="row justify-content-between text-left">
-                        <div class="form-group col-12 flex-column d-flex"> <label class="form-control-label px-3">What would you be using Flinks for?<span class="text-danger"> *</span></label> <input type="text" id="ans" name="ans" placeholder="" onblur="validate(6)"> </div>
-                    </div>
-                    <div class="row justify-content-end align-items-right">
-                        <div class="form-group col-sm-6"> <button type="submit" class="btn-block btn-primary">Request a demo</button> </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
