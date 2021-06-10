@@ -7,17 +7,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianos.dam.manspitub.porra.model.Usuario;
+import com.salesianos.dam.manspitub.porra.service.UsuarioService;
 
 @Controller
 public class UsuarioController {
 	
+	@Autowired
+	private UsuarioService uService;
 	
 	
 	
-	@GetMapping("/usuario")
+	@GetMapping("/")
 	public String index(Model model) {
-		//model.addAttribute("productos")
-		return "form-usuario";
+		model.addAttribute("usuarios",  uService.findAll());
+		return "index";
 	}
 	
 	@GetMapping("/usuario/nuevo")
@@ -30,6 +33,7 @@ public class UsuarioController {
 	
 	@PostMapping("/usuario/nuevo/submit")
 	public String submitNuevoUsuario(Usuario usuario, Model model) {
+		// Aquí va el repository.save 
 		return "redirect:/usuario/";
 	}
 }

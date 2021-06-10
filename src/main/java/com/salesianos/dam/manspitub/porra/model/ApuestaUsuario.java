@@ -17,6 +17,7 @@ public class ApuestaUsuario {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	
 	private String resultado;
 	private double dineroApostado;
 	

@@ -42,4 +42,16 @@ public class Porra {
 		this.listadoApuestas.remove(ap);
 		ap.setPorra(this);
 	}
+	public Porra(String nombre, String descripcion, String equipoLocal, String equipoVisitante
+			) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.equipoLocal = equipoLocal;
+		this.equipoVisitante = equipoVisitante;
+	}
+	
+	
+	
+	
 }
