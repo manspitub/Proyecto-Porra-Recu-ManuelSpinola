@@ -26,4 +26,14 @@ public class ApuestaUsuario {
 	
 	@ManyToOne
 	private Porra porra;
+
+	public ApuestaUsuario(String resultado, double dineroApostado, Usuario usuario, Porra porra) {
+		super();
+		this.resultado = resultado;
+		this.dineroApostado = dineroApostado;
+		this.usuario = usuario;
+		this.porra = porra;
+	}
+	
+	
 }

@@ -53,6 +53,17 @@ public class Usuario {
 		this.imagen = imagen;
 		this.saldo = saldo;
 	}
+
+	public Usuario(String nombre, String apellidos, double saldo) {
+		super();
+		this.nombre = nombre;
+		this.apellidos = apellidos;
+		this.saldo = saldo;
+	}
+	
+	
+	
+	
 	
 	
 	
