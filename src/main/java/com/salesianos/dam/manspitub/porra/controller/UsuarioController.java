@@ -66,6 +66,16 @@ public class UsuarioController {
 		
 	}
 	
+	@GetMapping("/usuario/{id}")
+	public String unUsuario(@PathVariable("id") Long usuarioId, Model model) {
+		Usuario u = uService.findById(usuarioId).orElse(null);
+		model.addAttribute("usuario", u);
+		
+		return "detailUsuario";
+	}
+	
+	
+	
 	
 	
 }
