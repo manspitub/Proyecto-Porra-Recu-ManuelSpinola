@@ -1,5 +1,6 @@
 package com.salesianos.dam.manspitub.porra.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,7 +33,17 @@ public class UsuarioController {
 	@GetMapping("/usuario")
 	public String index(Model model) {
 		
-		List<Usuario> usuarios = null;
+		Usuario a1 = new Usuario("Manuel", "Spinola Tubio" , "https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg" , 200);
+		Usuario a2 = new Usuario("Pepe", "Perez", 150);
+		Usuario a3 = new Usuario("María", "Chávez", "https://tdj.gg/uploads/attachs/90430_66956401-BCC3-40B6-B951-32503B0895DE.png", 300);
+		
+		List<Usuario> usuarios= new ArrayList <Usuario>();
+		
+		usuarios.add(a1);
+		usuarios.add(a2);
+		usuarios.add(a3);
+		
+		
 		model.addAttribute("usuarios",  usuarios);
 		return "list-usuario";
 	}
@@ -46,9 +57,9 @@ public class UsuarioController {
 	}
 	
 	@PostMapping("/usuario/nuevo/submit")
-	public String submitNuevoUsuario(@ModelAttribute("form-usuario") Usuario usuario, Model model) {
-		model.addAttribute("usuario", usuario);
-		return "list-usuario";
+	public String submitNuevoUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
+		uService.save(usuario);
+		return "redirect:/usuario";
 	}
 	
 	@GetMapping("usuario/editar/{id}")
@@ -61,8 +72,7 @@ public class UsuarioController {
 		}else {
 			return "redirect:/index/";
 		}
-		
-		
+	
 		
 	}
 	
