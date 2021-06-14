@@ -1,5 +1,6 @@
 package com.salesianos.dam.manspitub.porra.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,21 @@ public class PorraController {
 	
 	@GetMapping("/porra")
 	public String index(Model model) {
-		List<Porra> porras = null;
+		
+		Porra p1 = new Porra("Betis-Sevilla", "Descripción de porra", "Betis", "Sevilla");
+		Porra p2 = new Porra("Madrid-Barça", "Descripción de porra", "Real Madrid", "FC Barcelona");
+		Porra p3 = new Porra("Atletico de madrid-Celta de vigo", "Descripción de porra", "Atleti", "Celta de vigo");
+		
+		List<Porra> porras = new ArrayList<Porra>();
+		
+		porras.add(p1);
+		porras.add(p2);
+		porras.add(p3);
+		
 		model.addAttribute("porras", porras);
-		return "list-porras";
+		return "list-porra";
 	}
+	
+	
 	
 }

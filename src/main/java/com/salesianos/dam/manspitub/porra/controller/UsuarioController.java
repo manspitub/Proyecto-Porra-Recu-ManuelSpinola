@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.salesianos.dam.manspitub.porra.model.Usuario;
 import com.salesianos.dam.manspitub.porra.repository.UsuarioRepository;
 import com.salesianos.dam.manspitub.porra.service.UsuarioService;
+import com.sun.xml.bind.v2.model.core.ID;
 
 import lombok.RequiredArgsConstructor;
 
@@ -34,7 +35,7 @@ public class UsuarioController {
 	public String index(Model model) {
 		
 		Usuario a1 = new Usuario("Manuel", "Spinola Tubio" , "https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg" , 200);
-		Usuario a2 = new Usuario("Pepe", "Perez", 150);
+		Usuario a2 = new Usuario("Pepe", "Perez", "https://cn.i.cdn.ti-platform.com/content/1106/showpage/teen-titans-go%21/es/ttg-200x200.png", 150);
 		Usuario a3 = new Usuario("María", "Chávez", "https://tdj.gg/uploads/attachs/90430_66956401-BCC3-40B6-B951-32503B0895DE.png", 300);
 		
 		List<Usuario> usuarios= new ArrayList <Usuario>();
@@ -82,6 +83,14 @@ public class UsuarioController {
 		model.addAttribute("usuario", u);
 		
 		return "detailUsuario";
+	}
+	
+	@GetMapping("/usuario/borrar/{id}")
+	public String borrarUsuario(@PathVariable("id") Long id, Model model) {
+		uService.deleteById(id);
+		
+		return "redirect:/usuario/";
+		
 	}
 	
 	

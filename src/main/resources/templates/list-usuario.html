@@ -23,24 +23,20 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" href="index_sin_modal.html">Porritas Manuel</a>
+            <a class="navbar-brand" href="/usuario">Porritas Manuel</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">porras
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/porra">porras
                 <span class="caret"></span></a>
-                <ul class="dropdown-menu">
-                  <li><a href="#">Tus porras</a></li>
-                  <li><a href="#">Todas las porras</a></li>
-                </ul>
               </li>
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario
+                <a class="dropdown-toggle" data-toggle="dropdown" href="/usuario">Usuario
                 <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Ver usuarios</a></li>
-                  <li><a href="#">Modificar usuarios</a></li>
+                  <li><a href="/usuario">Ver usuarios</a></li>
+                  <li><a href="/usuario/edit">Modificar usuarios</a></li>
                 </ul>
               </li>
               <li><a href="niños.html">Resultados</a></li>
@@ -101,13 +97,12 @@
         <div class="row">
           
           <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Sobre nosotros</h5>
-            <p>Esta sitio web ha sido creado exclusivamente con fin educativo, para aprender el uso de Boostrap.
-              Somos dos alumnos del Grado superior de Desarrollo de Aplicaciones Multipataformas, cursando el primer
+            <h5 class="text-uppercase">Sobre el autor</h5>
+            <p>Esta aplicación web ha sido creada exclusivamente con fin educativo, para realizar el proyecto final.
+              Estudio en el Grado superior de Desarrollo de Aplicaciones Multipataformas, cursando el primer
               año en el Colegio Salesiano de Triana (Sevilla)
             </p>
             <br>
-            <p> Teléfono de pedidos: 900 533 433</p>
             <p>Teléfono de atención al cliente: 900 373 111</p>
           </div>
           
@@ -118,7 +113,7 @@
     
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="https://static.zara.net/static//pdfs/ES/privacy-policy/privacy-policy-es_ES-20201030.pdf" class="text-dark">Políticas y Privacidad</a>
+                <a href="https://porraoviedista.es/politica-de-privacidad/" class="text-dark">Políticas y Privacidad</a>
               </li>
               <li>
                 <a href="#!" class="text-dark">Intagram</a>
@@ -142,5 +137,29 @@
       
     </footer>
     <!-- Footer -->
+    
+    <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+					<h4 class="modal-title">Borrar Usuario</h4>
+				</div>
+				<div class="modal-body">
+					<p>¿Está usted seguro de borrar este usuario?</p>
+					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+					<a href="/usuario/borrar/" class="btn btn-danger">Sí</a>
+				</div>
+			</div>
+
+		</div>
+	</div>
+    
+
+	<script src="../../js/modal.js" th:src="@{/js/modal.js}"></script>
+    
 </body>
 </html>
