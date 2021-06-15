@@ -33,7 +33,7 @@ public class UsuarioController {
 	
 	@GetMapping("/usuario")
 	public String index(Model model) {
-		
+		/*
 		Usuario a1 = new Usuario("Manuel", "Spinola Tubio" , "https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg" , 200);
 		Usuario a2 = new Usuario("Pepe", "Perez", "https://cn.i.cdn.ti-platform.com/content/1106/showpage/teen-titans-go%21/es/ttg-200x200.png", 150);
 		Usuario a3 = new Usuario("María", "Chávez", "https://tdj.gg/uploads/attachs/90430_66956401-BCC3-40B6-B951-32503B0895DE.png", 300);
@@ -44,8 +44,8 @@ public class UsuarioController {
 		usuarios.add(a2);
 		usuarios.add(a3);
 		
-		
-		model.addAttribute("usuarios",  usuarios);
+		*/
+		model.addAttribute("usuarios",  uService.findAll());
 		return "list-usuario";
 	}
 	
@@ -74,16 +74,12 @@ public class UsuarioController {
 			return "redirect:/index/";
 		}
 	
+	
+		
 		
 	}
 	
-	@GetMapping("/usuario/{id}")
-	public String unUsuario(@PathVariable("id") Long usuarioId, Model model) {
-		Usuario u = uService.findById(usuarioId).orElse(null);
-		model.addAttribute("usuario", u);
-		
-		return "detailUsuario";
-	}
+
 	
 	@GetMapping("/usuario/borrar/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id, Model model) {
