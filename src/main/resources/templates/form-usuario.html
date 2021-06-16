@@ -15,6 +15,9 @@
     
 </head>
 <body>
+	
+	
+	
     <div class="container">
 
         <form method="post" action="#" th:action="@{/usuario/nuevo/submit}" th:object="${usuario}" class="well form-horizontal">
@@ -22,7 +25,7 @@
     
     <!-- Form Name -->
     <legend><center><h2><b>Inscríbase como usuario</b></h2></center></legend><br>
-    
+    <input type="hidden" th:field="*{id}" id="id" />
     <!-- Text input-->
     
     <div class="form-group">
@@ -65,7 +68,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
       <span class="input-group-addon"><i class="bi bi-cash"></i></span>
-      <input  name="user_cash" placeholder="Su Saldo" class="form-control"  type="number" min="0" th:field="*{saldo}">
+      <input  name="user_cash" placeholder="Su Saldo" class="form-control"  type="number" min="0" step="0.05" th:field="*{saldo}">
         </div>
       </div>
     </div>
@@ -77,7 +80,7 @@
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
       <span class="input-group-addon"><i class="bi bi-info-circle"></i></span>
-      <input name="user_birthday" class="form-control"  type="date">
+      <input name="user_birthday" class="form-control"  type="date" th:field="*{fechaNacimiento}">
         </div>
       </div>
     </div>

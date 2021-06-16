@@ -31,7 +31,7 @@ public class UsuarioController {
 	
 	
 	
-	@GetMapping("/usuario")
+	@GetMapping({"/","/usuario"})
 	public String index(Model model) {
 		/*
 		Usuario a1 = new Usuario("Manuel", "Spinola Tubio" , "https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg" , 200);

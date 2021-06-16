@@ -47,11 +47,12 @@ public class Usuario {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
 
-	public Usuario(String nombre, String apellidos, String imagen, double saldo) {
+	public Usuario(String nombre, String apellidos, String imagen, double saldo, LocalDate fechaNacimiento) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.imagen = imagen;
 		this.saldo = saldo;
+		this.fechaNacimiento = fechaNacimiento;
 	}
 
 	public Usuario(String nombre, String apellidos, double saldo) {

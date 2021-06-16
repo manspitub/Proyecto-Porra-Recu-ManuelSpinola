@@ -1,5 +1,6 @@
 package com.salesianos.dam.manspitub.porra;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -26,9 +27,9 @@ public class InitData {
 	@PostConstruct
 	public void init() {
 		
-		Usuario a1 = new Usuario("Manuel", "Spinola Tubio" , "https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg" , 200);
-		Usuario a2 = new Usuario("Pepe", "Perez", "https://cn.i.cdn.ti-platform.com/content/1106/showpage/teen-titans-go%21/es/ttg-200x200.png", 150);
-		Usuario a3 = new Usuario("María", "Chávez", "https://tdj.gg/uploads/attachs/90430_66956401-BCC3-40B6-B951-32503B0895DE.png", 300);
+		Usuario a1 = new Usuario("Manuel", "Spinola Tubio" , "https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg" , 200, LocalDate.of(2001, 7, 12));
+		Usuario a2 = new Usuario("Pepe", "Perez", "https://cn.i.cdn.ti-platform.com/content/1106/showpage/teen-titans-go%21/es/ttg-200x200.png", 150, LocalDate.of(2003, 2, 15));
+		Usuario a3 = new Usuario("María", "Chávez", "https://tdj.gg/uploads/attachs/90430_66956401-BCC3-40B6-B951-32503B0895DE.png", 300, LocalDate.of(2001, 9, 18) );
 		
 		usuarioService.save(a1);
 		usuarioService.save(a2);

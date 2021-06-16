@@ -67,6 +67,7 @@
 							<th>Nombre</th>
 							<th>Apellidos</th>
 							<th>Saldo</th>
+							<th>Fecha de nacimiento</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -78,6 +79,7 @@
 							<td th:text="${usuario.nombre}"></td>
 							<td th:text="${usuario.apellidos}">
 							<td th:text="${#numbers.formatCurrency(usuario.saldo)}"></td>
+							<td th:text="${#temporals.format(usuario.fechaNacimiento, 'dd/MM/yyyy')}">
 							<td class="operaciones"><a href="#"
 								th:href="@{/usuario/editar/{id}(id=${usuario.id})}"
 								class="btn btn-primary">Editar</a>
