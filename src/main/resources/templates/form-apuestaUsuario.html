@@ -17,16 +17,59 @@
 </head>
 <body>
 	
-	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="/">Porritas Manuel</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/usuario">Ver lista usuarios</a></li>
+              <li><a href="/usuario/nuevo/">Registrar usuario</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Porra
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/porra">Ver lista de porras</a></li>
+              <li><a href="/porra/nuevo/">Registrar porra</a></li>
+            </ul>
+          </li>
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Apuesta Usuario
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/apuestaUsuario">Ver lista de apuestas usuario</a></li>
+              <li><a href="/apuestaUsuario/nuevo/">Registrar apuesta usuario</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://porraoviedista.es/politica-de-privacidad/"><span class="glyphicon glyphicon-log-in"></span> Gestión de porras Manuel</a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
                     
                 
+                <br> <br> <br>
                 <h4 class="modal-title" id="myModalLabel">Formulario de Registro <span class="marca">Apuesta Usuario</span></h4>
             
             
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
-                <form class="well form-horizontal" action="#" th:action= "@{apuestaUsuario/nuevo/submit}" method="post"  id="contact_form" th:object="${apuestaUsuario}">
+                <form method="post" action="#" th:action="@{/apuestaUsuario/nuevo/submit}" th:object="${apuestaUsuario}" class="well form-horizontal">
                     <div class="form-group">
                         <label for="reultado">Resultado</label>
                         
@@ -66,9 +109,9 @@
             </div>
             
             <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary submitBtn btn-lg">ENVIAR</button>
-            </div>
+            
+                <button type="submit" class="btn btn-default">ENVIAR</button>
+           
       
 </body>
 </html>

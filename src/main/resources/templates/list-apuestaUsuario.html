@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th = "http://www.thymeleaf.org">
 <head>
-     <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
@@ -47,7 +47,7 @@
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
         <h1>Porras Manuel</h1>      
-        <p>Porras</p>
+        <p>Apuestas de usuario</p>
       </div>
     </div>
     
@@ -55,33 +55,31 @@
 		<div class="row">
 			<div class="col-md-offset-1 col-md-10">
 				<div class="pull-right">
-					<a href="form-usuario.html" th:href="@{/porra/nuevo/}" class="btn btn-primary">Nueva
-						Porra</a>
+					<a href="form-usuario.html" th:href="@{/apuestaUsuario/nuevo/}" class="btn btn-primary">Nueva
+						Apuesta Usuario</a>
 
 				</div>
 
 				<table class="table">
 					<thead>
 						<tr>
-							<th>Nombre</th>
-							<th>Descripcion</th>
-							<th>Equipo Local</th>
-							<th>Equipo Visitante</th>
+							<th>Resultado</th>
+							<th>Dinero apostado</th>
+							<th>Usuario</th>
+							<th>Porra</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr th:each="porra : ${porras}">
-						    <td th:text="${porra.nombre}"></td>
-                            <td>
-                                <textarea name="desc" id="desc"  rows="3" class="form-control"th:text="${porra.descripcion}"></textarea>
-                            </td>
-							<td th:text="${porra.equipoLocal}">
-							<td th:text="${porra.equipoVisitante}"></td>
+						<tr th:each="apuestaUsuario : ${apuestasUsuario}">
+							<td th:text ="${apuestaUsuario.resultado}"></td>
+							<td th:text="${#numbers.formatCurrency(apuestaUsuario.dineroApostado)}"></td>
+							<td th:text="${apuestaUsuario.usuario}">
+							<td th:text="${apuestaUsuario.porra}"></td>
 							<td class="operaciones"><a href="#"
-								th:href="@{/porra/editar/{id}(id=${porra.id})}"
+								th:href="@{/apuestaUsuario/editar/{id}(id=${apuestaUsuario.id})}"
 								class="btn btn-primary">Editar</a>
 								<button type="button" class="btn btn-danger" data-toggle="modal"
-									data-target="#delete-modal" th:data-id="${porra.id}">Borrar</button></td>
+									data-target="#delete-modal" th:data-id="${apuestaUsuario.id}">Borrar</button></td>
 						</tr>
 					</tbody>
 				</table>
@@ -109,10 +107,10 @@
     
             <ul class="list-unstyled mb-0">
               <li>
-                <a href="https://porraoviedista.es/politica-de-privacidad/">Políticas y Privacidad</a>
+                <a href="https://porraoviedista.es/politica-de-privacidad/" class="text-dark">Políticas y Privacidad</a>
               </li>
               <li>
-                <a href="#" class="text-dark">Intagram</a>
+                <a href="#!" class="text-dark">Intagram</a>
               </li>
               <li>
                 <a href="#!" class="text-dark">Twitter</a>
@@ -142,12 +140,12 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title">Borrar Porra</h4>
+					<h4 class="modal-title">Borrar apuesta Usuario</h4>
 				</div>
 				<div class="modal-body">
-					<p>¿Está usted seguro de borrar esta porra?</p>
+					<p>¿Está usted seguro de borrar esta apuesta de usuario?</p>
 					<button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-					<a href="/porra/borrar/" class="btn btn-danger">Sí</a>
+					<a href="/apuestaUsuario/borrar/" class="btn btn-danger">Sí</a>
 				</div>
 			</div>
 
@@ -156,5 +154,6 @@
     
 
 	<script src="../js/modal.js" th:src="@{/js/modal.js}"></script>
+    
 </body>
 </html>

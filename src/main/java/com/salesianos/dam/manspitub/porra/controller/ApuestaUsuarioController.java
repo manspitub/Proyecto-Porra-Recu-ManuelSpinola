@@ -1,12 +1,15 @@
 package com.salesianos.dam.manspitub.porra.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.salesianos.dam.manspitub.porra.model.ApuestaUsuario;
 import com.salesianos.dam.manspitub.porra.model.Porra;
@@ -37,6 +40,35 @@ public class ApuestaUsuarioController {
 		model.addAttribute("apuestaUsuario", new ApuestaUsuario());
 		return "form-apuestaUsuario";
 	}
+	
+	@PostMapping("/apuestaUsuario/nuevo/submit")
+	public String submitNuevaApuestaUsuario(@ModelAttribute("apuestaUsuario") ApuestaUsuario aUsuario, Model model) {
+		aUService.save(aUsuario);
+		return "redirect:/apuestaUsuario";
+	}
+	
+	@GetMapping("apuestaUsuario/editar/{id}")
+	public String editarApuestaUsuario(@PathVariable("id") Long id, Model model) {
+		Optional<ApuestaUsuario> aUsuario = aUService.findById(id);
+		
+		if (aUsuario !=null) {
+			model.addAttribute("apuestaUsuario", aUsuario);
+			return "form-apuestaUsuario";
+		}else {
+			return "redirect:/index/";
+		}
+	
+	}
+	
+	@GetMapping("/apuestaUsuario/borrar/{id}")
+	public String borrarApuestaUsuario(@PathVariable("id") Long id, Model model) {
+		aUService.deleteById(id);
+		
+		return "redirect:/apuestaUsuario/";
+		
+	}
+	
+	
 	
 	
 	@ModelAttribute("tipos_resultados")

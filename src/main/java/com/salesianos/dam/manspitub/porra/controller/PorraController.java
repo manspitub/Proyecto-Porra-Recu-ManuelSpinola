@@ -32,23 +32,21 @@ public class PorraController {
 	@GetMapping("/porra")
 	public String index(Model model) {
 		
-		
-		
 		model.addAttribute("porras", pService.findAll());
 		return "list-porra";
 	}
 	
-	@GetMapping("porra/nuevo")
+	@GetMapping("/porra/nuevo")
 	public String nuevaPorra(Model model) {
 		model.addAttribute("porra", new Porra());
 		
 		return "form-porra";
 	}
 	
-	@PostMapping("porra/nuevo/submit")
+	@PostMapping("/porra/nuevo/submit")
 	public String submitNuevaPorra(@ModelAttribute("porra") Porra porra, Model model) {
 		pService.save(porra);
-		return"redirect/porra";
+		return "redirect:/porra";
 	}
 	
 	@GetMapping("porra/editar/{id}")
@@ -61,6 +59,14 @@ public class PorraController {
 		}else {
 			return "redirect:/porra/";
 		}
+	}
+	
+	@GetMapping("/porra/borrar/{id}")
+	public String borrarUsuario(@PathVariable("id") Long id, Model model) {
+		pService.deleteById(id);
+		
+		return "redirect:/porra/";
+		
 	}
 	
 	

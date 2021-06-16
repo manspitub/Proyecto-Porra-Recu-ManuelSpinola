@@ -16,14 +16,57 @@
 </head>
 <body>
 	
-	
-	
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>                        
+        </button>
+        <a class="navbar-brand" href="index_sin_modal.html">Porritas Manuel</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Usuario
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/usuario">Ver lista usuarios</a></li>
+              <li><a href="/usuario/nuevo/">Registrar usuario</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Porra
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/porra">Ver lista de porras</a></li>
+              <li><a href="/porra/nuevo/">Registrar porra</a></li>
+            </ul>
+          </li>
+            <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Apuesta Usuario
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a href="/apuestaUsuario">Ver lista de apuestas usuario</a></li>
+              <li><a href="/apuestaUsuario/nuevo/">Registrar apuesta usuario</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        <li><a href="https://porraoviedista.es/politica-de-privacidad/"><span class="glyphicon glyphicon-log-in"></span> Gestión de porras Manuel</a></li>
+      </ul>
+      </div>
+    </div>
+  </nav>
     <div class="container">
 
         <form method="post" action="#" th:action="@{/usuario/nuevo/submit}" th:object="${usuario}" class="well form-horizontal">
+    <br> <br>
     <fieldset>
     
     <!-- Form Name -->
+    
     <legend><center><h2><b>Inscríbase como usuario</b></h2></center></legend><br>
     <input type="hidden" th:field="*{id}" id="id" />
     <!-- Text input-->
