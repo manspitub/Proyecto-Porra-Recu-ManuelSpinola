@@ -105,8 +105,8 @@
 
                 </form>
                 
-                <p th:if="*{error}" ><span th:text="*{mensaje_error}"></span></p>
-               
+                <div th:if="*{error}" ><span class="alert alert-danger" role="alert" th:text="*{mensaje_error}"></span></div>
+               	<div th:if="*{no_usuario}"><span class="alert alert-danger" role="alert" th:text="*{mensaje}"></span></div>
                 
                 
             </div>

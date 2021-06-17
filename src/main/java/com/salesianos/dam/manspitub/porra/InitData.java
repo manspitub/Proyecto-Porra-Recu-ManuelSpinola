@@ -18,6 +18,11 @@ import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
+/**
+ * Esta clase inicializa los usuarios y porras con 3 casos de ejemplo
+ * @author MANSPITUB
+ *
+ */
 public class InitData {
 	
 	private final UsuarioService usuarioService;
@@ -26,6 +31,9 @@ public class InitData {
 	//private final ApuestaUsuarioService aUService;
 	
 	@PostConstruct
+	/**
+	 * Aquí el método que inserta datos
+	 */
 	public void init() {
 		
 		Usuario a1 = new Usuario("Manuel", "Spinola Tubio" , "https://tdj.gg/uploads/attachs/20560_w9RC4W-QqXw-200x200.jpg" , 200, LocalDate.of(2001, 7, 12));

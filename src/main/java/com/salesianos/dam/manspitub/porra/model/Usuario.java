@@ -21,6 +21,11 @@ import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
+/**
+ * Clase que representa usuario
+ * @author MANSPITUB
+ *
+ */
 public class Usuario {
 	
 	@Id
@@ -31,8 +36,14 @@ public class Usuario {
 	
 	private String apellidos;
 	
+	/**
+	 * Url de imagen
+	 */
 	private String imagen;
 	
+	/**
+	 * Dinero para apostar
+	 */
 	private double saldo;
 	
 	@EqualsAndHashCode.Exclude
@@ -49,10 +60,20 @@ public class Usuario {
 		this.listaApuestas.remove(ap);
 		ap.setUsuario(this);
 	}
-	
+	/**
+	 * fecha de nacimiento del usuario en formato años/mes/dias
+	 */
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaNacimiento;
-
+	
+	/**
+	 * Constructor con todos los datos necesarios excepto la imagen que no lo es
+	 * @param nombre
+	 * @param apellidos
+	 * @param imagen
+	 * @param saldo
+	 * @param fechaNacimiento
+	 */
 	public Usuario(String nombre, String apellidos, String imagen, double saldo, LocalDate fechaNacimiento) {
 		this.nombre = nombre;
 		this.apellidos = apellidos;

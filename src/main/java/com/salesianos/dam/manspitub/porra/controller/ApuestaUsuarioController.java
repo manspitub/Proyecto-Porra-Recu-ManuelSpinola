@@ -23,35 +23,60 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+/**
+ * Controlador de la apuesta usuario
+ * @author MANSPITUB
+ *
+ */
 public class ApuestaUsuarioController {
 	private final ApuestaUsuarioService aUService;
 	private final UsuarioService uService;
 	private final PorraService pService;
 	
+	/**
+	 * Se muestra la lista de usuarios
+	 * @param model 
+	 * @return lista de usuarios
+	 */
 	@GetMapping("/apuestaUsuario")
 	public String index(Model model) {
 		
 		model.addAttribute("apuestasUsuario", aUService.findAll());
 		return "list-apuestaUsuario";
 	}
-	
+	/**
+	 * Muestra el formulario para rellenar un usuario
+	 * @param model
+	 * @return formulario usuario
+	 */
 	@GetMapping("/apuestaUsuario/nuevo")
 	public String nuevaApuestaUsuario (Model model) {
 		model.addAttribute("apuestaUsuario", new ApuestaUsuario());
 		return "form-apuestaUsuario";
 	}
-	
+	/**
+	 * Envía los datos de apuesta Usuario
+	 * @param aUsuario
+	 * @param model
+	 * @param id
+	 * @return
+	 */
 	@PostMapping("/apuestaUsuario/nuevo/submit")
-	public String submitNuevaApuestaUsuario(@ModelAttribute("apuestaUsuario") ApuestaUsuario aUsuario, Model model) {
-		
-		//aUService.save(aUsuario);
-//		if (this.u.getSaldo()) {
-//			uService.findById(this.u.getId()).
-//		}
-//		
-		
-		//if (aUsuario.)
-		
+	public String submitNuevaApuestaUsuario(@ModelAttribute("apuestaUsuario") ApuestaUsuario aUsuario, Model model, Long id) {
+		/**
+		 * Intento de método para mostrar mensaje cuando no haya usuarios registrados
+		 */
+		Optional<Usuario> user = uService.findById(id);
+		if (user != null) {
+			
+		}else {
+			model.addAttribute("no_usuario", false);
+			model.addAttribute("mensaje", "No hay usuarios registrados");
+			return "form-apuestaUsuario";
+		}
+		/**
+		 * Método que comprueba si el usuario tiene saldo suficiente conforme al dinero apostado y devuelve error si tiene menos saldo
+		 */
 		if (aUsuario.getUsuario().getSaldo() < aUsuario.getDineroApostado()) {
 			//no se puede hacer la apuesta
 			// redireccionar al formulario de nuevo
@@ -59,18 +84,31 @@ public class ApuestaUsuarioController {
 			aUsuario.setDineroApostado(aUsuario.getUsuario().getSaldo());
 			model.addAttribute("apuestaUsuario", aUsuario);
 			model.addAttribute("error", true);
-			model.addAttribute("mensaje_error", "Saldo insuficiente. La apuesta máxima debe ser inferior o igual a" + aUsuario.getUsuario().getSaldo());
+			model.addAttribute("mensaje_error", "Saldo insuficiente. La apuesta máxima debe ser inferior o igual a " + aUsuario.getUsuario().getSaldo());
 			return "form-apuestaUsuario";
 		} else {
 			Usuario aEditar = aUsuario.getUsuario();
 			aEditar.setSaldo(aEditar.getSaldo() - aUsuario.getDineroApostado());
 			uService.edit(aEditar);
 			aUService.save(aUsuario);
+			
+//			double total;
+//			total = aUsuario.getDineroApostado();
+//			model.addAttribute("recaudado", "El total recaudado es "+total);
 			return "redirect:/apuestaUsuario";
 		}
 		
+		
+		
+		
 	}
 	
+	/**
+	 * Edita un usuario
+	 * @param id
+	 * @param model
+	 * @return la lista de usuarios modificada
+	 */
 	@GetMapping("apuestaUsuario/editar/{id}")
 	public String editarApuestaUsuario(@PathVariable("id") Long id, Model model) {
 		Optional<ApuestaUsuario> aUsuario = aUService.findById(id);
@@ -84,6 +122,12 @@ public class ApuestaUsuarioController {
 	
 	}
 	
+	/**
+	 * Borra un usuario
+	 * @param id
+	 * @param model
+	 * @return Lista de apuesta usuario sin elemento borrado
+	 */
 	@GetMapping("/apuestaUsuario/borrar/{id}")
 	public String borrarApuestaUsuario(@PathVariable("id") Long id, Model model) {
 		aUService.deleteById(id);

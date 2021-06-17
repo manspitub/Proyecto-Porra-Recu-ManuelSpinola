@@ -21,6 +21,11 @@ import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequiredArgsConstructor
+/**
+ * Controlador de Usuario
+ * @author MANSPITUB
+ *
+ */
 public class UsuarioController {
 	
 	@Autowired
@@ -30,7 +35,11 @@ public class UsuarioController {
 	private UsuarioRepository uRepo;
 	
 	
-	
+	/**
+	 * 
+	 * @param model
+	 * @return Lista de usuario o Inicio
+	 */
 	@GetMapping({"/","/usuario"})
 	public String index(Model model) {
 		/*
@@ -49,6 +58,12 @@ public class UsuarioController {
 		return "list-usuario";
 	}
 	
+	/**
+	 * Formulario nuevo Usuario
+	 * @param model
+	 * @return
+	 */
+	
 	@GetMapping("/usuario/nuevo")
 	public String nuevoUsuario(Model model) {
 		model.addAttribute("usuario", new Usuario());
@@ -56,13 +71,24 @@ public class UsuarioController {
 		//model.addAttribute("porras")
 		return "form-usuario";
 	}
-	
+	/**
+	 * Envío datos usuario
+	 * @param usuario
+	 * @param model
+	 * @return
+	 */
 	@PostMapping("/usuario/nuevo/submit")
 	public String submitNuevoUsuario(@ModelAttribute("usuario") Usuario usuario, Model model) {
 		uService.save(usuario);
 		return "redirect:/usuario";
 	}
 	
+	/**
+	 * Edición de un usuario
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("usuario/editar/{id}")
 	public String editarUsuario(@PathVariable("id") Long id, Model model) {
 		Optional<Usuario> usuario = uService.findById(id);
@@ -79,7 +105,13 @@ public class UsuarioController {
 		
 	}
 	
-
+	
+	/**
+	 * Borrado de un usuario
+	 * @param id
+	 * @param model
+	 * @return
+	 */
 	
 	@GetMapping("/usuario/borrar/{id}")
 	public String borrarUsuario(@PathVariable("id") Long id, Model model) {
