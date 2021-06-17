@@ -70,11 +70,12 @@
 						</tr>
 					</thead>
 					<tbody>
+					
 						<tr th:each="apuestaUsuario : ${apuestasUsuario}">
 							<td th:text ="${apuestaUsuario.resultado}"></td>
 							<td th:text="${#numbers.formatCurrency(apuestaUsuario.dineroApostado)}"></td>
-							<td th:text="${apuestaUsuario.usuario}">
-							<td th:text="${apuestaUsuario.porra}"></td>
+							<td th:text="${apuestaUsuario.usuario.nombre + ' '+apuestaUsuario.usuario.apellidos}">
+							<td th:text="${apuestaUsuario.porra.nombre}"></td>
 							<td class="operaciones"><a href="#"
 								th:href="@{/apuestaUsuario/editar/{id}(id=${apuestaUsuario.id})}"
 								class="btn btn-primary">Editar</a>

@@ -64,17 +64,17 @@
                 
                 <br> <br> <br>
                 <h4 class="modal-title" id="myModalLabel">Formulario de Registro <span class="marca">Apuesta Usuario</span></h4>
-            
+            	
             
             <!-- Modal Body -->
             <div class="modal-body">
                 <p class="statusMsg"></p>
                 <form method="post" action="#" th:action="@{/apuestaUsuario/nuevo/submit}" th:object="${apuestaUsuario}" class="well form-horizontal">
+                <input type="hidden" th:field="*{id}" id="id"/>
                     <div class="form-group">
                         <label for="reultado">Resultado</label>
                         
-                        <select th:field=*{resultado}>
-                        <option value="">---</option>
+                        <select th:field=*{resultado} required>
                         <option th:each="resultado : ${tipos_resultados}"
                         	th:value="${resultado}" th:text="${resultado}">
 						Resultado
@@ -83,12 +83,11 @@
                     </div>
                     <div class="form-group">
                         <label for="inputDin">Dinero Apostado</label>
-                        <input type="number" class="form-control" id="inputDin" placeholder="1.0" min="0"  th:field="*{dineroApostado}"/>
+                        <input type="number" class="form-control" id="inputDin" placeholder="1.0" min="1"  th:field="*{dineroApostado}" required/>
                     </div>
                     <div class="form-group">
                         <label for="inputSelect">Usuarios</label>
-                        <select th:field="*{usuario}" class="form-control" id="inputSelect">
-                          <option value="-1">---</option>
+                        <select th:field="*{usuario}" class="form-control" id="inputSelect" required>
                           <option th:each="usuario : ${usuarios}" th:value="${usuario.id}" th:text="${usuario.nombre}">Usuarios</option>
                           
                         </select>
@@ -96,21 +95,25 @@
                     
                     <div class="form-group">
                         <label for="inputSelect">Porras</label>
-                        <select th:field="*{porra}" class="form-control" id="inputSelect">
-                          <option value="-1">---</option>
+                        <select th:field="*{porra}" class="form-control" id="inputSelect" required>
                           <option th:each="porra : ${porras}" th:value="${porra.id}" th:text="${porra.nombre}">Porras</option>
                           
                         </select>
                     </div>
                     
-                    
+                     <button type="submit" class="btn btn-default">ENVIAR</button>
 
                 </form>
+                
+                <p th:if="*{error}" ><span th:text="*{mensaje_error}"></span></p>
+               
+                
+                
             </div>
             
             <!-- Modal Footer -->
             
-                <button type="submit" class="btn btn-default">ENVIAR</button>
+               
            
       
 </body>

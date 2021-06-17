@@ -73,7 +73,7 @@
 						<tr th:each="porra : ${porras}">
 						    <td th:text="${porra.nombre}"></td>
                             <td>
-                                <textarea name="desc" id="desc"  rows="3" class="form-control"th:text="${porra.descripcion}"></textarea>
+                                <textarea name="desc" id="desc"  rows="3" class="form-control"th:text="${porra.descripcion}" readonly></textarea>
                             </td>
 							<td th:text="${porra.equipoLocal}">
 							<td th:text="${porra.equipoVisitante}"></td>

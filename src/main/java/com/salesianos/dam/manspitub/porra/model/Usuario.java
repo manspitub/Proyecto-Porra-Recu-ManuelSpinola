@@ -1,8 +1,10 @@
 package com.salesianos.dam.manspitub.porra.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -14,7 +16,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class Usuario {
@@ -31,8 +35,10 @@ public class Usuario {
 	
 	private double saldo;
 	
-	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER)
-	private List<ApuestaUsuario> listaApuestas;
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
+	private List<ApuestaUsuario> listaApuestas = new ArrayList<>();
 	
 	public void addApuestaUsuario(ApuestaUsuario ap) {
 		this.listaApuestas.add(ap);

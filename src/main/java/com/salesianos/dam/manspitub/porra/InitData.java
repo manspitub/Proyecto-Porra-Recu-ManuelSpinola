@@ -22,6 +22,7 @@ public class InitData {
 	
 	private final UsuarioService usuarioService;
 	private final PorraService porraService;
+	private final ApuestaUsuarioService aUService;
 	//private final ApuestaUsuarioService aUService;
 	
 	@PostConstruct
@@ -43,10 +44,9 @@ public class InitData {
 		porraService.save(p2);
 		porraService.save(p3);
 		
-//		List<ApuestaUsuario> apuestaUsuarios = List.of(new ApuestaUsuario("1", 100, a1, p1),
-//				new ApuestaUsuario("X", 200, a2, p2),
-//				new ApuestaUsuario("2", 300, a3, p3));
-//		apuestaUsuarios.forEach(aUService::save);
+//	ApuestaUsuario aU1 = new ApuestaUsuario("X", 50, a1, p3);
+//	
+//	aUService.save(aU1);
 	}
 	
 }

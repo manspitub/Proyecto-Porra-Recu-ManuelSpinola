@@ -76,7 +76,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input  name="first_name" placeholder="Su nombre" class="form-control"  type="text" th:field="*{nombre}">
+      <input  name="first_name" placeholder="Su nombre" class="form-control"  type="text" th:field="*{nombre}" required>
         </div>
       </div>
     </div>
@@ -89,7 +89,7 @@
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input name="last_name" placeholder="Sus apellidos" class="form-control"  type="text"th:field= "*{apellidos}">
+      <input name="last_name" placeholder="Sus apellidos" class="form-control"  type="text"th:field= "*{apellidos}" required>
         </div>
       </div>
     </div>
@@ -99,7 +99,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
       <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-      <input  name="url_image" placeholder="link aquí" class="form-control"  type="text" th:field="*{imagen}">
+      <input  name="url_image" placeholder="link aquí" class="form-control"  type="text" th:field="*{imagen}"> 
         </div>
       </div>
     </div>  
@@ -111,7 +111,7 @@
       <div class="col-md-4 inputGroupContainer">
       <div class="input-group">
       <span class="input-group-addon"><i class="bi bi-cash"></i></span>
-      <input  name="user_cash" placeholder="Su Saldo" class="form-control"  type="number" min="0" step="0.05" th:field="*{saldo}">
+      <input  name="user_cash" placeholder="Su Saldo" class="form-control"  type="number" min="0" step="0.05" th:field="*{saldo}" required>
         </div>
       </div>
     </div>
@@ -123,7 +123,7 @@
         <div class="col-md-4 inputGroupContainer">
         <div class="input-group">
       <span class="input-group-addon"><i class="bi bi-info-circle"></i></span>
-      <input name="user_birthday" class="form-control"  type="date" th:field="*{fechaNacimiento}">
+      <input name="user_birthday" class="form-control"  type="date" th:field="*{fechaNacimiento}"required>
         </div>
       </div>
     </div>

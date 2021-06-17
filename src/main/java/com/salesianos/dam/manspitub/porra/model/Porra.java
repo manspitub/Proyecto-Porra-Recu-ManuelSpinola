@@ -3,6 +3,7 @@ package com.salesianos.dam.manspitub.porra.model;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -10,9 +11,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Cascade;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
 public class Porra {
@@ -31,7 +36,10 @@ public class Porra {
 	
 	private LocalDateTime fechaCreacion;
 	
-	@OneToMany(mappedBy = "porra", fetch = FetchType.EAGER)
+	
+	@EqualsAndHashCode.Exclude
+	@ToString.Exclude
+	@OneToMany(mappedBy = "porra", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private List<ApuestaUsuario> listadoApuestas;
 	
 	public void addApuestaUsuario(ApuestaUsuario ap) {

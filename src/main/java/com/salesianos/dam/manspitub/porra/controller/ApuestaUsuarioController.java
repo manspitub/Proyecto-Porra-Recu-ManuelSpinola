@@ -43,8 +43,32 @@ public class ApuestaUsuarioController {
 	
 	@PostMapping("/apuestaUsuario/nuevo/submit")
 	public String submitNuevaApuestaUsuario(@ModelAttribute("apuestaUsuario") ApuestaUsuario aUsuario, Model model) {
-		aUService.save(aUsuario);
-		return "redirect:/apuestaUsuario";
+		
+		//aUService.save(aUsuario);
+//		if (this.u.getSaldo()) {
+//			uService.findById(this.u.getId()).
+//		}
+//		
+		
+		//if (aUsuario.)
+		
+		if (aUsuario.getUsuario().getSaldo() < aUsuario.getDineroApostado()) {
+			//no se puede hacer la apuesta
+			// redireccionar al formulario de nuevo
+			//return "redirect:/apuestaUsuario/nuevo";
+			aUsuario.setDineroApostado(aUsuario.getUsuario().getSaldo());
+			model.addAttribute("apuestaUsuario", aUsuario);
+			model.addAttribute("error", true);
+			model.addAttribute("mensaje_error", "Saldo insuficiente. La apuesta máxima debe ser inferior o igual a" + aUsuario.getUsuario().getSaldo());
+			return "form-apuestaUsuario";
+		} else {
+			Usuario aEditar = aUsuario.getUsuario();
+			aEditar.setSaldo(aEditar.getSaldo() - aUsuario.getDineroApostado());
+			uService.edit(aEditar);
+			aUService.save(aUsuario);
+			return "redirect:/apuestaUsuario";
+		}
+		
 	}
 	
 	@GetMapping("apuestaUsuario/editar/{id}")
@@ -85,4 +109,6 @@ public class ApuestaUsuarioController {
 	public List<Porra> porras() {
 		return pService.findAll();
 	}
+	
+	
 }
